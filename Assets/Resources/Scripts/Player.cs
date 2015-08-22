@@ -3,11 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
+	public Transform groundCheck;
+	public LayerMask whatIsGround;
 
 	public float rotForce = 1f;
 
 
 	bool attached = true;
+	bool grounded = true;
 
 	void Start () 
 	{
@@ -15,7 +18,7 @@ public class Player : MonoBehaviour
 		rigidbody2D.AddTorque(0.5f);
 	}
 	
-	void FixedUpdate () 
+	void Update () 
 	{
 
 		// BASIC MOVEMENT.		
@@ -26,6 +29,13 @@ public class Player : MonoBehaviour
 		if (Input.GetKey(KeyCode.D))
 		{
 			rigidbody2D.AddTorque(-rotForce);
+		}
+		
+		// JUMP.
+		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.001f, whatIsGround);
+		if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		{
+			rigidbody2D.AddForce(new Vector2(0, 75));
 		}
 		
 		// BREAK OFF.
@@ -40,10 +50,5 @@ public class Player : MonoBehaviour
 		rigidbody2D.gravityScale = 1;
 		rigidbody2D.AddForce(new Vector2(rigidbody2D.angularVelocity / -20, 50));
 		attached = false;
-	}
-	
-	void Update ()
-	{
-	
 	}
 }
