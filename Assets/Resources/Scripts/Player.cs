@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	void Start () 
 	{
 		rigidbody2D.gravityScale = 0;
-		rigidbody2D.AddTorque(0.5f);
+		rigidbody2D.AddTorque(-45);
 	}
 	
 	void Update () 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.001f, whatIsGround);
 		if (Input.GetKeyDown(KeyCode.Space) && grounded)
 		{
-			rigidbody2D.AddForce(new Vector2(0, 75));
+			rigidbody2D.AddForce(new Vector2(0, 750));
 		}
 		
 		// BREAK OFF.
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 	void BreakOff()
 	{
 		rigidbody2D.gravityScale = 1;
-		rigidbody2D.AddForce(new Vector2(rigidbody2D.angularVelocity / -20, 50));
+		rigidbody2D.AddForce(new Vector2(rigidbody2D.angularVelocity / -2, 500));
 		attached = false;
 	}
 }
