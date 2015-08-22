@@ -11,11 +11,17 @@ public class Player : MonoBehaviour
 
 	bool attached = true;
 	bool grounded = true;
+	float jumpCD = 0f;
 
 	void Start () 
 	{
 		rigidbody2D.gravityScale = 0;
 		rigidbody2D.AddTorque(-45);
+	}
+	
+	void FixedUpdate ()
+	{
+		jumpCD += Time.deltaTime;
 	}
 	
 	void Update () 
@@ -33,9 +39,10 @@ public class Player : MonoBehaviour
 		
 		// JUMP.
 		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.001f, whatIsGround);
-		if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		if (Input.GetKey(KeyCode.Space) && grounded && jumpCD > 0.3f)
 		{
 			rigidbody2D.AddForce(new Vector2(0, 750));
+			jumpCD = 0f;
 		}
 		
 		// BREAK OFF.

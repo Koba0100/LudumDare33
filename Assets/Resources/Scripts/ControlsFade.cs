@@ -8,6 +8,7 @@ public class ControlsFade : MonoBehaviour {
 	Vector3 initialPos;
 	
 	public Text controlsText;
+	public Text controlsTextShadow;
 	public Image controlsImage;
 	
 	void Start ()
@@ -22,6 +23,7 @@ public class ControlsFade : MonoBehaviour {
 		if (initialPos != player.transform.position)
 		{
 			controlsText.text = "";
+			controlsTextShadow.text = "";
 			controlsImage.color = new Color(0, 0, 0, 0);
 		}
 	}

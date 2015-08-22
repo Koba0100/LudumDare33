@@ -9,6 +9,7 @@ public class Civilian : MonoBehaviour
 	SpriteRenderer spRender;
 	int skinIdx;
 	
+	public bool isPerson = true;
 	public bool canMove = true;
 	public int pointValue = 5;
 	bool runRight = true;
@@ -20,9 +21,12 @@ public class Civilian : MonoBehaviour
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		
-		skinIdx = Random.Range (1, 4);
-		spRender = this.GetComponent<SpriteRenderer>();
-		spRender.sprite = Resources.Load<Sprite>("Art/Person" + skinIdx);
+		if (isPerson)
+		{
+			skinIdx = Random.Range (1, 4);
+			spRender = this.GetComponent<SpriteRenderer>();
+			spRender.sprite = Resources.Load<Sprite>("Art/Person" + skinIdx);
+		}
 		
 		hopFreq = (float)Random.Range (1, 10) / 5f;
 	}
