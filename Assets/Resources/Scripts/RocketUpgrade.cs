@@ -12,6 +12,8 @@ public class RocketUpgrade : MonoBehaviour {
 	Vector3 pos;
 	Vector3 dir;
 	public float angle;
+	
+	AudioClip rocketSound;
 
 	// Use this for initialization
 	void Start () 
@@ -22,6 +24,8 @@ public class RocketUpgrade : MonoBehaviour {
 		normal = Resources.Load<Sprite>("Art/Rocket");
 		boost = Resources.Load<Sprite>("Art/RocketBoost");
 		tutorial.parent = null;
+		
+		rocketSound = Resources.Load<AudioClip>("Sounds/Rocket");
 	}
 	
 	// Update is called once per frame
@@ -39,6 +43,7 @@ public class RocketUpgrade : MonoBehaviour {
 			spRender.sprite = boost;
 			player.rigidbody2D.AddForce (new Vector2(10 * Mathf.Cos (angle * Mathf.Deg2Rad), 20 * Mathf.Sin (angle * Mathf.Deg2Rad))); 
 			tutorial.localScale = new Vector3 (0, 0, 0);
+			AudioSource.PlayClipAtPoint(rocketSound, player.transform.position);
 		}
 		else
 		{

@@ -8,6 +8,8 @@ public class LaserScript : MonoBehaviour {
 	Vector2 speed;
 	float lifetimer = 0f;
 	
+	AudioClip laserSound;
+	
 	public LayerMask whatIsGround;
 	bool collide = false;
 
@@ -17,6 +19,8 @@ public class LaserScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		dRay = GameObject.FindGameObjectWithTag("DeathRay").GetComponent<DeathRayUpgrade>();
 		speed = new Vector2(50 * Mathf.Cos (dRay.angle * Mathf.Deg2Rad) + player.rigidbody2D.velocity.x , 50 * Mathf.Sin (dRay.angle * Mathf.Deg2Rad) + player.rigidbody2D.velocity.y);
+		laserSound = Resources.Load<AudioClip>("Sounds/Laser");
+		AudioSource.PlayClipAtPoint(laserSound, player.transform.position);
 	}
 	
 	// Update is called once per frame
