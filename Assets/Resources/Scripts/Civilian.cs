@@ -16,6 +16,8 @@ public class Civilian : MonoBehaviour
 	float hopFreq = 1;
 	float hopTimer = 0;
 	float distance;
+	
+	AudioClip hitsound;
 
 	void Start () 
 	{
@@ -29,6 +31,8 @@ public class Civilian : MonoBehaviour
 		}
 		
 		hopFreq = (float)Random.Range (1, 10) / 5f;
+		
+		hitsound = Resources.Load<AudioClip>("Sounds/Hitsound");
 	}
 	
 	void FixedUpdate () 
@@ -58,6 +62,7 @@ public class Civilian : MonoBehaviour
 			if (alive)
 			{
 				Score.score += pointValue;
+				AudioSource.PlayClipAtPoint(hitsound, player.transform.position);
 			}
 			alive = false;
 			canMove = false;

@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// JUMP.
-		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.001f, whatIsGround);
+		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, whatIsGround);
 		if (Input.GetKey(KeyCode.Space) && grounded && jumpCD > 0.3f)
 		{
 			rigidbody2D.AddForce(new Vector2(0, 750));
