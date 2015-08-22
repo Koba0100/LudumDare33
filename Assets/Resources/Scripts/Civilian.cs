@@ -5,7 +5,7 @@ public class Civilian : MonoBehaviour
 {
 	GameObject player;
 
-	bool alive = true;
+	public bool alive = true;
 	SpriteRenderer spRender;
 	int skinIdx;
 	
