@@ -14,6 +14,7 @@ public class Civilian : MonoBehaviour
 	bool runRight = true;
 	float hopFreq = 1;
 	float hopTimer = 0;
+	float distance;
 
 	void Start () 
 	{
@@ -23,25 +24,26 @@ public class Civilian : MonoBehaviour
 		spRender = this.GetComponent<SpriteRenderer>();
 		spRender.sprite = Resources.Load<Sprite>("Art/Person" + skinIdx);
 		
-		hopFreq = (float)Random.Range (1, 10) / 7f;
+		hopFreq = (float)Random.Range (1, 10) / 5f;
 	}
 	
 	void FixedUpdate () 
 	{
-		if (canMove)
-		{
-			hopTimer += Time.deltaTime;
-			
-			runRight = (transform.position.x - player.transform.position.x > 0);
-			if (hopTimer > hopFreq)
+		distance = Vector2.Distance (transform.position, player.transform.position);
+		if (canMove && distance < 30)
 			{
-				hopTimer = 0;
-				if (runRight)
-					rigidbody2D.AddForce(new Vector2(1, 1));
-				else
-					rigidbody2D.AddForce(new Vector2(-1, 1));
+				hopTimer += Time.deltaTime;
+				
+				runRight = (transform.position.x - player.transform.position.x > 0);
+				if (hopTimer > hopFreq)
+				{
+					hopTimer = 0;
+					if (runRight)
+						rigidbody2D.AddForce(new Vector2(1, 1));
+					else
+						rigidbody2D.AddForce(new Vector2(-1, 1));
+				}
 			}
-		}
 	}
 	
 	void OnTriggerEnter2D (Collider2D other)

@@ -1,0 +1,5 @@
+People start on ferris wheel, fly off as you start spinning
+
+Add rocket booster upgrade
+
+Add gun upgrade
