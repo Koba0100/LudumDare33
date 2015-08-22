@@ -29,7 +29,7 @@ public class LaserScript : MonoBehaviour {
 		rigidbody2D.velocity = speed;
 		lifetimer += Time.deltaTime;
 		collide = Physics2D.OverlapCircle(transform.position, 0.7f, whatIsGround);
-		if (lifetimer > 4f || collide)
+		if (lifetimer > 2f || collide)
 			Destroy (this.gameObject);
 	}
 }

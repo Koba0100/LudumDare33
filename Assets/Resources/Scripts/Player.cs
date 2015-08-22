@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 	bool attached = true;
 	bool grounded = true;
 	float jumpCD = 0f;
+	
+	float resetTimer = 0f;
 
 	void Start () 
 	{
@@ -22,6 +24,11 @@ public class Player : MonoBehaviour
 	void FixedUpdate ()
 	{
 		jumpCD += Time.deltaTime;
+		
+		if (transform.position.y > 210f)
+			rigidbody2D.gravityScale = 0;
+		else if (!attached)
+			rigidbody2D.gravityScale = 1;
 	}
 	
 	void Update () 
@@ -49,6 +56,18 @@ public class Player : MonoBehaviour
 		if ((rigidbody2D.angularVelocity > 1000 || rigidbody2D.angularVelocity < -1000) && attached)
 		{
 			BreakOff();
+		}
+		
+		// RESET.
+		if (Input.GetKey(KeyCode.R))
+		{
+			resetTimer += Time.deltaTime;
+			if (resetTimer > 1f)
+				Application.LoadLevel ("Scene01");
+		}
+		else
+		{
+			resetTimer = 0f;
 		}
 	}
 	

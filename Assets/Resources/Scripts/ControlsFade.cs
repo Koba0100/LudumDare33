@@ -11,6 +11,10 @@ public class ControlsFade : MonoBehaviour {
 	public Text controlsTextShadow;
 	public Image controlsImage;
 	
+	public Text controlsRestart;
+	public Text controlsRestartShadow;
+	public Image rkey;
+	
 	void Start ()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +29,10 @@ public class ControlsFade : MonoBehaviour {
 			controlsText.text = "";
 			controlsTextShadow.text = "";
 			controlsImage.color = new Color(0, 0, 0, 0);
+			
+			controlsRestart.text = "";
+			controlsRestartShadow.text = "";
+			rkey.color = new Color(0, 0, 0, 0);
 		}
 	}
 }
