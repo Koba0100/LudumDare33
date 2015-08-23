@@ -5,9 +5,9 @@ public class RocketUpgrade : MonoBehaviour {
 
 	GameObject player;
 	public Transform tutorial;
-	SpriteRenderer spRender;
-	Sprite normal;
-	Sprite boost;
+	//SpriteRenderer spRender;
+	//Sprite normal;
+	//Sprite boost;
 	public ParticleSystem booster;
 	
 	Vector3 pos;
@@ -20,10 +20,10 @@ public class RocketUpgrade : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
-		spRender = this.GetComponent<SpriteRenderer>();
+		//spRender = this.GetComponent<SpriteRenderer>();
 		
-		normal = Resources.Load<Sprite>("Art/Rocket");
-		boost = Resources.Load<Sprite>("Art/RocketBoost");
+		//normal = Resources.Load<Sprite>("Art/Rocket");
+		//boost = Resources.Load<Sprite>("Art/RocketBoost");
 		tutorial.parent = null;
 		
 		rocketSound = Resources.Load<AudioClip>("Sounds/Rocket");
@@ -42,7 +42,7 @@ public class RocketUpgrade : MonoBehaviour {
 		// Booster
 		if (Input.GetKey (KeyCode.Mouse0))
 		{
-			spRender.sprite = boost;
+			//spRender.sprite = boost;
 			player.rigidbody2D.AddForce (new Vector2(10 * Mathf.Cos (angle * Mathf.Deg2Rad), 20 * Mathf.Sin (angle * Mathf.Deg2Rad))); 
 			if (Upgrades.powerUnlocked)
 			{
@@ -54,7 +54,7 @@ public class RocketUpgrade : MonoBehaviour {
 		}
 		else
 		{
-			spRender.sprite = normal;
+			//spRender.sprite = normal;
 			booster.enableEmission = false;
 		}
 	}

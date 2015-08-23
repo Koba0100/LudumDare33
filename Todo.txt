@@ -1,3 +1,6 @@
 People start on ferris wheel, fly off as you start spinning
 
 Red Unlock at 3000 points = BOSS
+
+BOSS summons a keyboard key, 'R'. If he touches it, your game restarts. You have to bounce the 'R' Key around while fighting him, because he will seek it.
+	Luckily, it's rather bouncy.

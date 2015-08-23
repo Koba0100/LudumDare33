@@ -14,8 +14,14 @@ public class Score : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
 		scoreBox.text = score.ToString();
 		scoreBoxShadow.text = score.ToString();
+		
+		if (score >= 3000)
+		{
+			Upgrades.UnlockDeath ();
+		}
 	}
 }

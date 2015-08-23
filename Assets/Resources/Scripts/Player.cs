@@ -69,6 +69,12 @@ public class Player : MonoBehaviour
 		{
 			resetTimer = 0f;
 		}
+		
+		// QUIT.
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
 	}
 	
 	public void BreakOff()

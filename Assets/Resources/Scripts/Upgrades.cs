@@ -7,6 +7,7 @@ public class Upgrades : MonoBehaviour {
 	public static bool rocketUnlocked = false;
 	public static bool deathRayUnlocked = false;
 	public static bool powerUnlocked = false;
+	public static bool deathUnlocked = false;
 	static GameObject rocketPrefab;
 	static GameObject deathRayPrefab;
 
@@ -21,6 +22,7 @@ public class Upgrades : MonoBehaviour {
 		rocketUnlocked = false;
 		deathRayUnlocked = false;
 		powerUnlocked = false;
+		deathUnlocked = false;
 		rocketPrefab = Resources.Load<GameObject>("Prefabs/Rocket");
 		deathRayPrefab = Resources.Load<GameObject>("Prefabs/DeathRay");
 		locksBase = GameObject.FindGameObjectWithTag("Locks");
@@ -74,6 +76,16 @@ public class Upgrades : MonoBehaviour {
 			powerUnlocked = true;
 			//Instantiate (rocketPrefab);
 			locks[2].color = (new Color(0, 0, 0, 0));
+		}
+	}
+	
+	public static void UnlockDeath ()
+	{
+		if (!deathUnlocked)
+		{
+			deathUnlocked = true;
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Upgrade"), GameObject.FindGameObjectWithTag("Player").transform.position);
+			locks[3].color = (new Color(0, 0, 0, 0));
 		}
 	}
 }
