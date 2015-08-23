@@ -4,6 +4,7 @@ using System.Collections;
 public class Civilian : MonoBehaviour 
 {
 	GameObject player;
+	Player playerScript;
 
 	public bool alive = true;
 	SpriteRenderer spRender;
@@ -22,6 +23,7 @@ public class Civilian : MonoBehaviour
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
+		playerScript = player.GetComponent<Player>();
 		
 		if (isPerson)
 		{
@@ -38,7 +40,7 @@ public class Civilian : MonoBehaviour
 	void FixedUpdate () 
 	{
 		distance = Vector2.Distance (transform.position, player.transform.position);
-		if (canMove && distance < 30)
+		if (canMove && distance < 30 && !playerScript.attached)
 			{
 				hopTimer += Time.deltaTime;
 				
