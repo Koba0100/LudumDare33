@@ -23,6 +23,13 @@ public class Upgrades : MonoBehaviour {
 	public Text HPNumberShad;
 	
 	public Canvas endSlate;
+	
+	public Canvas cDownCanvas;
+	public Text cDown;
+	public Text cDownShad;
+	float cDownTimer = 3f;
+	
+	bool satanSpawned = false;
 
 	// Use this for initialization
 	void Start () 
@@ -45,6 +52,7 @@ public class Upgrades : MonoBehaviour {
 		HPNumberShad.color = new Color (0, 0, 0, 0);
 		
 		endSlate.enabled = false;
+		cDownCanvas.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -74,6 +82,21 @@ public class Upgrades : MonoBehaviour {
 			if (LRSatan.bossHP <= 0)
 			{
 				endSlate.enabled = true;
+			}
+			
+			cDownCanvas.enabled = true;
+			cDownTimer -= Time.deltaTime;
+			cDown.text = (cDownTimer + 1).ToString();
+			cDownShad.text = (cDownTimer + 1).ToString();
+			if (cDownTimer <= 0f && !satanSpawned)
+			{
+				satanSpawned = true;
+				Instantiate (lrSatanPrefab);
+				Camera.main.GetComponent<AudioSource>().pitch = 1.19f;				
+			}
+			if (cDownTimer <= 0f)
+			{
+				cDownCanvas.enabled = false;
 			}
 		}
 	}
@@ -118,9 +141,6 @@ public class Upgrades : MonoBehaviour {
 			deathUnlocked = true;
 			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Upgrade"), GameObject.FindGameObjectWithTag("Player").transform.position);
 			locks[3].color = (new Color(0, 0, 0, 0));
-			
-			Instantiate (lrSatanPrefab);
-			Camera.main.GetComponent<AudioSource>().pitch = 1.19f;
 		}
 	}
 }
