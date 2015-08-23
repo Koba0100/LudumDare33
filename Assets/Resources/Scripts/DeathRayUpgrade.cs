@@ -6,6 +6,8 @@ public class DeathRayUpgrade : MonoBehaviour
 	public Transform tutorial;
 	public Transform laserOrigin;
 	public GameObject laserPrefab;
+	
+	public static bool canFire = true;
 
 	Vector3 pos;
 	Vector3 dir;
@@ -16,6 +18,7 @@ public class DeathRayUpgrade : MonoBehaviour
 	{
 		laserPrefab = Resources.Load<GameObject>("Prefabs/Laser");
 		tutorial.parent = null;
+		canFire = true;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +32,7 @@ public class DeathRayUpgrade : MonoBehaviour
 		
 		
 		// Fire
-		if (Input.GetKey(KeyCode.Mouse1))
+		if (Input.GetKey(KeyCode.Mouse1) && canFire)
 		{ 
 			tutorial.localScale = new Vector3 (0, 0, 0);
 			Instantiate (laserPrefab, laserOrigin.position, transform.rotation);

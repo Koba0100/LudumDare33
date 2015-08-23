@@ -63,17 +63,21 @@ public class LRSatan : MonoBehaviour {
 	{
 		initTimer += Time.deltaTime;
 		
-		if (initTimer > 0.2f && shortPause)
+		//if (initTimer > 0.2f && shortPause)
+		if (initTimer < 1f)
 		{
-			shortPause = false;
-			Time.timeScale = 0;
-			pauseEnd = Time.realtimeSinceStartup + 1;
-			while (Time.realtimeSinceStartup < pauseEnd)
-			{
-				// Nothing
-			}
-			Time.timeScale = 1;
+		//	shortPause = false;
+		//	Time.timeScale = 0;
+		//	pauseEnd = Time.realtimeSinceStartup + 1;
+		//	while (Time.realtimeSinceStartup < pauseEnd)
+		//	{
+		//		// Nothing
+		//	}
+		//	Time.timeScale = 1;
+			DeathRayUpgrade.canFire = false;
 		}
+		else
+			DeathRayUpgrade.canFire = true;
 		
 		if (initTimer > 2.5f && initTimer < 2.6f)
 		{
@@ -103,10 +107,10 @@ public class LRSatan : MonoBehaviour {
 			rigidbody2D.AddForce (new Vector2(0f, 40f));
 			
 		// Limits
-		if (rigidbody2D.velocity.x > 10f)
-			rigidbody2D.velocity = new Vector2 (10f, rigidbody2D.velocity.y);
-		if (rigidbody2D.velocity.x < -10f)
-			rigidbody2D.velocity = new Vector2 (-10f, rigidbody2D.velocity.y);			
+		if (rigidbody2D.velocity.x > 20f)
+			rigidbody2D.velocity = new Vector2 (20f, rigidbody2D.velocity.y);
+		if (rigidbody2D.velocity.x < -20f)
+			rigidbody2D.velocity = new Vector2 (-20f, rigidbody2D.velocity.y);			
 		if (rigidbody2D.velocity.y > 15f)
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, 15f);
 	}

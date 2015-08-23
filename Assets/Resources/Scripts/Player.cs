@@ -77,13 +77,13 @@ public class Player : MonoBehaviour
 		}
 		
 		// HAX! TODO GET RID OF THIS!
-		if (Input.GetKeyDown(KeyCode.H))
-		{
-			Upgrades.UnlockRocket();
-			Upgrades.UnlockDeathRay();
-			Upgrades.UnlockRocketPower();
-			Score.score = 2900;
-		}
+		//if (Input.GetKeyDown(KeyCode.H))
+		//{
+		//	Upgrades.UnlockRocket();
+		//	Upgrades.UnlockDeathRay();
+		//	Upgrades.UnlockRocketPower();
+		//	Score.score = 2900;
+		//}
 	}
 	
 	public void BreakOff()
