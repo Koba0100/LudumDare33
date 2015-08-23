@@ -9,6 +9,7 @@ public class UnlockPower : MonoBehaviour
 		{
 			Upgrades.UnlockRocketPower();
 			Destroy(this.gameObject);
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Upgrade"), GameObject.FindGameObjectWithTag("Player").transform.position);
 		}
 	}
 }

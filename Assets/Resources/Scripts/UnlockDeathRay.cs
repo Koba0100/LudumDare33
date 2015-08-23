@@ -9,6 +9,7 @@ public class UnlockDeathRay : MonoBehaviour
 		{
 			Upgrades.UnlockDeathRay();
 			Destroy(this.gameObject);
+			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Upgrade"), GameObject.FindGameObjectWithTag("Player").transform.position);
 		}
 	}
 }
