@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 	public float rotForce = 1f;
 
 
-	bool attached = true;
+	public bool attached = true;
 	bool grounded = true;
 	float jumpCD = 0f;
 	
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 		}
 	}
 	
-	void BreakOff()
+	public void BreakOff()
 	{
 		rigidbody2D.gravityScale = 1;
 		rigidbody2D.AddForce(new Vector2(rigidbody2D.angularVelocity / -2, 500));
