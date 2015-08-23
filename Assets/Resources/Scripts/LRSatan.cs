@@ -16,7 +16,7 @@ public class LRSatan : MonoBehaviour {
 	
 	// INITIAL VARS //
 	float initTimer = 0f;
-	bool shortPause = true;
+	//bool shortPause = true;
 	float pauseEnd;
 	
 	// STANDARD VARS //

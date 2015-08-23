@@ -9,6 +9,7 @@ public class RocketUpgrade : MonoBehaviour {
 	//Sprite normal;
 	//Sprite boost;
 	public ParticleSystem booster;
+	public ParticleSystem booster2;
 	
 	Vector3 pos;
 	Vector3 dir;
@@ -28,6 +29,7 @@ public class RocketUpgrade : MonoBehaviour {
 		
 		rocketSound = Resources.Load<AudioClip>("Sounds/Rocket");
 		booster.enableEmission = false;
+		booster2.enableEmission = false;
 	}
 	
 	// Update is called once per frame
@@ -47,6 +49,7 @@ public class RocketUpgrade : MonoBehaviour {
 			if (Upgrades.powerUnlocked)
 			{
 				player.rigidbody2D.AddForce (new Vector2(10 * Mathf.Cos (angle * Mathf.Deg2Rad), 20 * Mathf.Sin (angle * Mathf.Deg2Rad))); 
+				booster2.enableEmission = true;
 			}
 			tutorial.localScale = new Vector3 (0, 0, 0);
 			AudioSource.PlayClipAtPoint(rocketSound, player.transform.position);
@@ -56,6 +59,7 @@ public class RocketUpgrade : MonoBehaviour {
 		{
 			//spRender.sprite = normal;
 			booster.enableEmission = false;
+			booster2.enableEmission = false;
 		}
 	}
 }

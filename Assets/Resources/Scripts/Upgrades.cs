@@ -21,6 +21,8 @@ public class Upgrades : MonoBehaviour {
 	public Text HPTextShad;
 	public Text HPNumber;
 	public Text HPNumberShad;
+	
+	public Canvas endSlate;
 
 	// Use this for initialization
 	void Start () 
@@ -41,6 +43,8 @@ public class Upgrades : MonoBehaviour {
 		HPTextShad.color = new Color (0, 0, 0, 0);
 		HPNumber.color = new Color (1, 1, 1, 0);
 		HPNumberShad.color = new Color (0, 0, 0, 0);
+		
+		endSlate.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -66,6 +70,11 @@ public class Upgrades : MonoBehaviour {
 			
 			HPNumber.text = LRSatan.bossHP.ToString();
 			HPNumberShad.text = LRSatan.bossHP.ToString();
+			
+			if (LRSatan.bossHP <= 0)
+			{
+				endSlate.enabled = true;
+			}
 		}
 	}
 	
@@ -111,6 +120,7 @@ public class Upgrades : MonoBehaviour {
 			locks[3].color = (new Color(0, 0, 0, 0));
 			
 			Instantiate (lrSatanPrefab);
+			Camera.main.GetComponent<AudioSource>().pitch = 1.19f;
 		}
 	}
 }
