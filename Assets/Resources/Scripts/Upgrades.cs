@@ -10,11 +10,17 @@ public class Upgrades : MonoBehaviour {
 	public static bool deathUnlocked = false;
 	static GameObject rocketPrefab;
 	static GameObject deathRayPrefab;
+	static GameObject lrSatanPrefab;
 
 	public static GameObject locksBase;
 	public static Image[] locks;
 	
 	public AudioSource BGM;
+	
+	public Text HPText;
+	public Text HPTextShad;
+	public Text HPNumber;
+	public Text HPNumberShad;
 
 	// Use this for initialization
 	void Start () 
@@ -25,10 +31,16 @@ public class Upgrades : MonoBehaviour {
 		deathUnlocked = false;
 		rocketPrefab = Resources.Load<GameObject>("Prefabs/Rocket");
 		deathRayPrefab = Resources.Load<GameObject>("Prefabs/DeathRay");
+		lrSatanPrefab = Resources.Load<GameObject>("Prefabs/LowResSatan");
 		locksBase = GameObject.FindGameObjectWithTag("Locks");
 		locks = locksBase.GetComponentsInChildren<Image>();
 		
 		BGM = Camera.main.GetComponent<AudioSource>();
+		
+		HPText.color = new Color (1, 1, 1, 0);
+		HPTextShad.color = new Color (0, 0, 0, 0);
+		HPNumber.color = new Color (1, 1, 1, 0);
+		HPNumberShad.color = new Color (0, 0, 0, 0);
 	}
 	
 	// Update is called once per frame
@@ -43,6 +55,17 @@ public class Upgrades : MonoBehaviour {
 		if (powerUnlocked && BGM.volume > 0.1f)
 		{
 			BGM.volume -= 0.02f;
+		}
+		
+		if (deathUnlocked)
+		{
+			HPText.color = new Color (1, 1, 1, 1);
+			HPTextShad.color = new Color (0, 0, 0, 1);
+			HPNumber.color = new Color (1, 1, 1, 1);
+			HPNumberShad.color = new Color (0, 0, 0, 1);
+			
+			HPNumber.text = LRSatan.bossHP.ToString();
+			HPNumberShad.text = LRSatan.bossHP.ToString();
 		}
 	}
 	
@@ -86,6 +109,8 @@ public class Upgrades : MonoBehaviour {
 			deathUnlocked = true;
 			AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Upgrade"), GameObject.FindGameObjectWithTag("Player").transform.position);
 			locks[3].color = (new Color(0, 0, 0, 0));
+			
+			Instantiate (lrSatanPrefab);
 		}
 	}
 }
